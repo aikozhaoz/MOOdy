@@ -20,23 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/signuptxt_heading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:text="Sign Up"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <LinearLayout
             android:id="@+id/moody_heading"
             android:layout_width="match_parent"
@@ -64,7 +47,8 @@
                 android:adjustViewBounds="true"
                 android:maxWidth="160dp"
                 android:maxHeight="80dp"
-                app:srcCompat="@drawable/signup_login_cow"></ImageView>
+                app:srcCompat="@drawable/signup_login_cow">
+            </ImageView>
         </LinearLayout>
 
     </RelativeLayout>

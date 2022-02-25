@@ -1,5 +1,6 @@
 package com.mentalhealthapp.moody;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 import android.widget.Button;
 import android.os.Bundle;
 import android.content.Intent;
+import android.view.MenuItem;
+import androidx.appcompat.app.ActionBar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +21,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        // calling the action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("MOOdy");
+        // showing the back button in action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        // Fire log in activity
 //        Button loginButton = findViewById(R.id.main_button_logIn);
 //        loginButton.setOnClickListener(new View.OnClickListener() {
