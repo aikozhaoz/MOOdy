@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "575573645953",
+    "project_id": "moody-149b6",
+    "storage_bucket": "moody-149b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575573645953:android:d29becceb0756b62548b80",
+        "android_client_info": {
+          "package_name": "com.mentalhealthapp.moody"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575573645953-5q4itcdqi600cppahubegtlhva6mgs95.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2yUnU6arCyiA9O2WqJjSWl1OIoOmxhgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575573645953-5q4itcdqi600cppahubegtlhva6mgs95.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
