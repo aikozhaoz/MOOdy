@@ -15,7 +15,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="500dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_signup_section"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -35,8 +35,7 @@
                 android:text="MOOdy"
                 android:textColor="@color/black"
                 android:textSize="50dp"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <ImageView
                 android:id="@+id/moodyimg_heading"
@@ -47,13 +46,13 @@
                 android:adjustViewBounds="true"
                 android:maxWidth="160dp"
                 android:maxHeight="80dp"
-                app:srcCompat="@drawable/signup_login_cow">
-            </ImageView>
+                app:srcCompat="@drawable/signup_login_cow"></ImageView>
         </LinearLayout>
 
     </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/layout_signup_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -86,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/beige"
                     android:gravity="left"
-                    android:padding="10dp"
+                    android:padding="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/brown"
                     android:textSize="15sp" />
@@ -98,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
                 android:hint="Last Name"
                 android:textColorHint="@color/brown"
@@ -113,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/beige"
                     android:gravity="left"
-                    android:padding="10dp"
+                    android:padding="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/brown"
                     android:textSize="15sp" />
@@ -125,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
                 android:hint="Email"
                 android:textColorHint="@color/brown"
@@ -140,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/beige"
                     android:gravity="left"
-                    android:padding="10dp"
+                    android:padding="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/brown"
                     android:textSize="15sp" />
@@ -152,7 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
                 android:hint="Password"
                 android:textColorHint="@color/brown"
@@ -168,7 +167,7 @@
                     android:background="@color/beige"
                     android:gravity="left"
                     android:inputType="textPassword"
-                    android:padding="10dp"
+                    android:padding="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/brown"
                     android:textSize="15sp" />
@@ -181,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
                 android:textColorHint="@color/brown"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -197,7 +196,7 @@
                     android:gravity="left"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
-                    android:padding="10dp"
+                    android:padding="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/brown"
                     android:textSize="15sp" />
