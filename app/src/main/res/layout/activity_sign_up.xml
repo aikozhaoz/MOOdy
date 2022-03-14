@@ -9,11 +9,11 @@
 
     <!--    Header-->
     <RelativeLayout
-        android:id="@+id/signup_heading"
+        android:id="@+id/signup_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="500dp"
         app:layout_constraintBottom_toTopOf="@id/layout_signup_section"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,23 +56,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        app:layout_constraintTop_toBottomOf="@id/signup_heading">
+        app:layout_constraintTop_toBottomOf="@id/signup_header">
 
-        <!--        First Name-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="true"
             android:focusableInTouchMode="true">
 
+            <!--        First Name-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="15dp"
-                android:hint="First Name"
+                android:layout_marginRight="20dp"
                 android:textColorHint="@color/brown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/beige"
                     android:gravity="left"
+                    android:hint="First Name"
                     android:padding="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/brown"
@@ -99,7 +99,6 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
-                android:hint="Last Name"
                 android:textColorHint="@color/brown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -112,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/beige"
                     android:gravity="left"
+                    android:hint="Last Name"
                     android:padding="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/brown"
@@ -126,7 +126,6 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
-                android:hint="Email"
                 android:textColorHint="@color/brown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -139,6 +138,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/beige"
                     android:gravity="left"
+                    android:hint="Email"
                     android:padding="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/brown"
@@ -153,7 +153,6 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
-                android:hint="Password"
                 android:textColorHint="@color/brown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -166,6 +165,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/beige"
                     android:gravity="left"
+                    android:hint="Password"
                     android:inputType="textPassword"
                     android:padding="20dp"
                     android:textColor="@color/black"

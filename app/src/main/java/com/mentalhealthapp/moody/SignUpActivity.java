@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Button;
+import android.util.Log;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,8 +23,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    private static final String TAG = SignUpActivity.class.getSimpleName();
+    private final int MIN_PASSWORD_LENGTH = 8;
+    private FirebaseAuth auth;
+    private FirebaseUser currentUser;
     EditText etFirstName, etLastName, etEmail, etPassword, etConfirmPassword;
-    final int MIN_PASSWORD_LENGTH = 8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +35,20 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         getSupportActionBar().setTitle("Sign Up");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        // Create back button
-        viewInitializations();
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance();
+        // Initialize Firebase current user
+        currentUser = auth.getCurrentUser();
+        // Get user's info and check if they meet our criteria.
+        validateUserCredentials();
     }
 
-    public void viewInitializations() {
+    public void validateUserCredentials() {
         etFirstName = findViewById(R.id.et_first_name);
         etLastName = findViewById(R.id.et_last_name);
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         etConfirmPassword = findViewById(R.id.et_confirm_password);
-
 
         // Fire sign up button
         Button signupButton = findViewById(R.id.signup_button_signup);
@@ -74,7 +80,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 // Check email format
                 else if (!isEmailValid(email)) {
-                    etEmail.setError("Please enter valid Email address.");
+                    etEmail.setError("Please enter a valid Email address.");
                     etEmail.requestFocus();
                 }
                 // Check minimum password Length
@@ -86,9 +92,9 @@ public class SignUpActivity extends AppCompatActivity {
                 else if (!password.equals(confirmPassword)) {
                     etConfirmPassword.setError("Password does not match.");
                     etPassword.requestFocus();
-                }else{
-                    // Sign user up with firebase
-                    signUserUp(firstName, lastName, email, password);
+                } else {
+                    // Create an account for the user using firebase
+                    createAccount(firstName, lastName, email, password);
                 }
             }
         });
@@ -99,10 +105,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
-    //    Sign user up with given credentials
-    private void signUserUp(String firstName, String lastName, String email, String password) {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = auth.getCurrentUser();
+    //    Create an account for the user with given credentials
+    private void createAccount(String firstName, String lastName, String email, String password) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -115,10 +119,11 @@ public class SignUpActivity extends AppCompatActivity {
                     // To do: Redirect to user's home page
                     // finish();
                     // Check if user is verified.
-                    if(currentUser.isEmailVerified()){
+                    if (currentUser.isEmailVerified()) {
                         Toast.makeText(SignUpActivity.this, "You are verified!", Toast.LENGTH_SHORT).show();
                     }
-                }else{
+                } else {
+                    Log.d(TAG, "Sign up: failure", task.getException());
                     Toast.makeText(SignUpActivity.this, "Failed to send verification email. User already existed.", Toast.LENGTH_SHORT).show();
                 }
             }

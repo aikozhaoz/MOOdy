@@ -26,15 +26,16 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setTitle("MOOdy");
         // showing the back button in action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        // Fire log in activity
-//        Button loginButton = findViewById(R.id.main_button_logIn);
-//        loginButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, LogInActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
+        // Fire log in activity
+        Button loginButton = findViewById(R.id.main_button_logIn);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LogInActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Fire sign up activity
         Button signupButton = findViewById(R.id.main_button_signUp);
