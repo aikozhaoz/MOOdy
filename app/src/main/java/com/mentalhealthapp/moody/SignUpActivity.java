@@ -3,6 +3,7 @@ package com.mentalhealthapp.moody;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -95,6 +96,8 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     // Create an account for the user using firebase
                     createAccount(firstName, lastName, email, password);
+                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                    startActivity(intent);
                 }
             }
         });

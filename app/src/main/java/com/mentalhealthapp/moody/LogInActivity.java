@@ -3,6 +3,7 @@ package com.mentalhealthapp.moody;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -52,6 +53,8 @@ public class LogInActivity extends AppCompatActivity {
                 }
                 else{
                     signIn(email, password);
+                    Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
+                    startActivity(intent);
                 }
             }
         });
