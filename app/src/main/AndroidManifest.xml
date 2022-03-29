@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOOdy">
         <activity
+            android:name=".UpdatePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteAccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".LogInActivity"
             android:exported="false" />
         <activity
