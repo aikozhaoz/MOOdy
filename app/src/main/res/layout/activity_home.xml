@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigationView">
-
         <Button
             android:id="@+id/change_password_button"
             android:layout_width="match_parent"
@@ -24,7 +23,6 @@
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintWidth_percent="0.5" />
-
         <Button
             android:id="@+id/delete_account_button"
             android:layout_width="match_parent"
@@ -38,14 +36,13 @@
             android:textSize="15sp"
             app:layout_constraintWidth_percent="0.5" />
     </FrameLayout>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
+        android:background="@color/nude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/nude"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/bottom_navigation_menu"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
