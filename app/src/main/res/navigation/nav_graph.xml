@@ -3,35 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_journal">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.mentalhealthapp.moody.HomeFragment"
-        android:label="home"
-        tools:layout="@layout/fragment_survey" />
+        android:id="@+id/navigation_journal"
+        android:name="com.mentalhealthapp.moody.JournalFragment"
+        android:label="Journal"
+        tools:layout="@layout/fragment_journal" />
 
     <fragment
         android:id="@+id/navigation_survey"
         android:name="com.mentalhealthapp.moody.SurveyFragment"
-        android:label="survey"
+        android:label="Survey"
         tools:layout="@layout/fragment_survey" />
 
     <fragment
         android:id="@+id/navigation_insights"
         android:name="com.mentalhealthapp.moody.InsightsFragment"
-        android:label="journal"
+        android:label="Insights"
         tools:layout="@layout/fragment_insights" />
 
     <fragment
         android:id="@+id/navigation_goals"
         android:name="com.mentalhealthapp.moody.GoalsFragment"
-        android:label="goals"
+        android:label="Goals"
         tools:layout="@layout/fragment_goals" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.mentalhealthapp.moody.ProfileFragment"
-        android:label="profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

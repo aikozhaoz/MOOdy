@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity{
 
         //Pass the ID's of Different destinations
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_survey, R.id.navigation_profile, R.id.navigation_goals, R.id.navigation_insights)
+                R.id.navigation_journal, R.id.navigation_survey, R.id.navigation_profile, R.id.navigation_goals, R.id.navigation_insights)
                 .build();
 
         //Initialize NavController.
