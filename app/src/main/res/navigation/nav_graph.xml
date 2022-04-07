@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.mentalhealthapp.moody.HomeFragment"
+        android:label="home"
+        tools:layout="@layout/fragment_survey" />
+
+    <fragment
+        android:id="@+id/navigation_survey"
+        android:name="com.mentalhealthapp.moody.SurveyFragment"
+        android:label="survey"
+        tools:layout="@layout/fragment_survey" />
+
+    <fragment
+        android:id="@+id/navigation_insights"
+        android:name="com.mentalhealthapp.moody.InsightsFragment"
+        android:label="journal"
+        tools:layout="@layout/fragment_insights" />
+
+    <fragment
+        android:id="@+id/navigation_goals"
+        android:name="com.mentalhealthapp.moody.GoalsFragment"
+        android:label="goals"
+        tools:layout="@layout/fragment_goals" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.mentalhealthapp.moody.ProfileFragment"
+        android:label="profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
