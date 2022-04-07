@@ -2,4 +2,24 @@
     <string name="app_name">MOOdy</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terrible">Awful</string>
+    <string name="bad">Bad</string>
+    <string name="neutral">Neutral</string>
+    <string name="good">Good</string>
+    <string name="amazing">Amazing</string>
+    <string name="a_lot">A lot</string>
+    <string name="some">Some</string>
+    <string name="little">Little</string>
+    <string name="none">None</string>
+    <string name="one_hour">1 Hour</string>
+    <string name="two_hours">2 Hours</string>
+    <string name="three_hours">3 Hours</string>
+    <string name="four_plus_hours">4+ Hours</string>
+    <string name="self_assessment_warning">Please answer the questions below as honestly as possible.</string>
+    <string name="question1">1.) How are you feeling today?</string>
+    <string name="question2">2.) How well did you sleep last night?</string>
+    <string name="question3">3.) How much stress are you feeling today?</string>
+    <string name="question4">4.) How active are you being today?</string>
+    <string name="submit">Submit</string>
+    <string name="self_assessment">Self-Assessment</string>
 </resources>
