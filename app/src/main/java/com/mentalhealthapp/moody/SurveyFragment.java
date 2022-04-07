@@ -9,13 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,8 +27,13 @@ import com.google.firebase.database.FirebaseDatabase;
  * create an instance of this fragment.
  */
 public class SurveyFragment extends Fragment {
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
+    final String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+//    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//    DatabaseReference ref = database.getReference();
+//    Query query = ref.child("Users").orderByChild("email").equalTo(email);
+
+    //ref.orderByChild("email").equalTo(email);
+    //ref = database.getReference("Users" + user.getFirstName() + user.getLastName());
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -139,8 +148,12 @@ public class SurveyFragment extends Fragment {
                     RadioButton answer3 = (RadioButton) question3.findViewById(selectedId3);
                     RadioButton answer4 = (RadioButton) question4.findViewById(selectedId4);
 
+                    //need to get the date
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    Calendar c = Calendar.getInstance();
+                    String date = sdf.format(c.getTime());
                     //now we put these in the database
-
+//                    ref.child(date).child("question1").setValue(answer1);
                     // Now display survey has been submitted
                     Toast.makeText(getView().getContext(), "Survey Submitted", Toast.LENGTH_SHORT).show();
                     //clear all the radio buttons
