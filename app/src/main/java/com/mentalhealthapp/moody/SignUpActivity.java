@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -29,6 +31,9 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseUser currentUser;
     EditText etFirstName, etLastName, etEmail, etPassword, etConfirmPassword;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference ref = database.getReference("Users");
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +102,11 @@ public class SignUpActivity extends AppCompatActivity {
                     // Create an account for the user using firebase
                     createAccount(firstName, lastName, email, password);
                     Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                    user = new User();
+                    user.setEmail(email);
+                    user.setFirstName(firstName);
+                    user.setLastName(lastName);
+                    ref.child(firstName + lastName).setValue(user);
                     startActivity(intent);
                 }
             }
