@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Journal"
-        android:icon = "@drawable/ic_baseline_calendar_today_24"
+        android:icon = "@drawable/ic_baseline_article_24"
         android:id = "@+id/navigation_journal" />
     <item android:title="Survey"
-        android:icon = "@drawable/ic_baseline_entries_24"
+        android:icon = "@drawable/ic_baseline_assessment_24"
         android:id = "@+id/navigation_survey"/>
     <item android:title="Goals"
-        android:icon = "@drawable/ic_baseline_add_24"
+        android:icon = "@drawable/ic_baseline_beenhere_24"
         android:id = "@+id/navigation_goals"/>
     <item android:title = "Insights"
         android:icon = "@drawable/ic_baseline_insights_24"
         android:id = "@+id/navigation_insights"/>
     <item android:title = "Profile"
-        android:icon = "@drawable/ic_baseline_setting_24"
+        android:icon = "@drawable/ic_baseline_account_circle_24"
         android:id = "@+id/navigation_profile"/>
 
 </menu>
