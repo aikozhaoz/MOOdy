@@ -22,7 +22,7 @@
         <entry key="app/src/main/res/layout/activity_start.xml" value="0.25171661376953125" />
         <entry key="app/src/main/res/layout/activity_update_password.xml" value="0.26197916666666665" />
         <entry key="app/src/main/res/layout/fragment_journal.xml" value="0.26197916666666665" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.26197916666666665" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22313232421875" />
         <entry key="app/src/main/res/layout/fragment_survey.xml" value="0.26197916666666665" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.209375" />

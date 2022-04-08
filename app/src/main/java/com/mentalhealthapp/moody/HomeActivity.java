@@ -30,7 +30,8 @@ public class HomeActivity extends AppCompatActivity{
         auth = FirebaseAuth.getInstance();
         //Get user info
         currentUser = auth.getCurrentUser();
-        userName = currentUser.getDisplayName();
+        userName = currentUser.getDisplayName().toString();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         //Initialize Bottom Navigation View.
