@@ -23,7 +23,10 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,13 +34,9 @@ import java.util.Calendar;
  * create an instance of this fragment.
  */
 public class SurveyFragment extends Fragment {
-    final String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//    FirebaseDatabase database = FirebaseDatabase.getInstance();
-//    DatabaseReference ref = database.getReference();
-//    Query query = ref.child("Users").orderByChild("email").equalTo(email);
-
-    //ref.orderByChild("email").equalTo(email);
-    //ref = database.getReference("Users" + user.getFirstName() + user.getLastName());
+    final private String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private List<SurveyData> surveyDataList;
+    private DatabaseReference ref;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -93,6 +92,27 @@ public class SurveyFragment extends Fragment {
         RadioGroup question2 = getView().findViewById(R.id.question2);
         RadioGroup question3 = getView().findViewById(R.id.question3);
         RadioGroup question4 = getView().findViewById(R.id.question4);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        ref = database.getReference("SurveysTest/" + UID);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Object value = snapshot.getValue();
+                if (value != null){
+                    List result = (List) value;
+                    updateSurveyDataList(result);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        surveyDataList = new ArrayList<>();
 
         question1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -150,14 +170,27 @@ public class SurveyFragment extends Fragment {
                     RadioButton answer3 = (RadioButton) question3.findViewById(selectedId3);
                     RadioButton answer4 = (RadioButton) question4.findViewById(selectedId4);
 
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference ref = database.getReference("Surveys/" + UID+ "/"+ date);
 
+                    HashMap data = new HashMap();
+                    data.put("Date", date);
+                    data.put("Question1", answer1.getText());
+                    data.put("Question2", answer2.getText());
+                    data.put("Question3", answer3.getText());
+                    data.put("Question4", answer4.getText());
+
+                    SurveyData surveyData = new SurveyData(data);
+
+                    updateDatabase(surveyData);
+//
+//                    surveyDataList.add(surveyData);
+//                    Survey survey = new Survey(surveyDataList);
+//
+//                    ref.setValue(survey);
                     //now we put these in the database
-                    ref.child("Question1").setValue(answer1.getText());
-                    ref.child("Question2").setValue(answer2.getText());
-                    ref.child("Question3").setValue(answer3.getText());
-                    ref.child("Question4").setValue(answer4.getText());
+//                    ref.child("Question1").setValue(answer1.getText());
+//                    ref.child("Question2").setValue(answer2.getText());
+//                    ref.child("Question3").setValue(answer3.getText());
+//                    ref.child("Question4").setValue(answer4.getText());
 
                     // Now display survey has been submitted
                     Toast.makeText(getView().getContext(), "Survey Submitted", Toast.LENGTH_SHORT).show();
@@ -169,5 +202,24 @@ public class SurveyFragment extends Fragment {
                 }
             }
         });
+    }
+
+    public void updateDatabase(SurveyData surveyData) {
+        List<SurveyData> updateSurvey = new ArrayList<>();
+        for (int i=0; i<surveyDataList.size(); i++){
+            updateSurvey.add( surveyDataList.get(i));
+        }
+        updateSurvey.add(surveyData);
+
+        ref.setValue(updateSurvey);
+    }
+
+    private void updateSurveyDataList(List<HashMap> valueList) {
+        surveyDataList.clear();
+        for (int i=0;i< valueList.size();i++){
+            HashMap survey = valueList.get(i);
+            SurveyData surveyData = new SurveyData((HashMap) survey.get("surveyData"));
+            surveyDataList.add(surveyData);
+        }
     }
 }

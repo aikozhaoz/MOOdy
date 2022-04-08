@@ -44,7 +44,7 @@ public class GoalsFragment extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private EditText goalText;
-    FirebaseUser user;
+    private FirebaseUser user;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
