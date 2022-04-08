@@ -18,14 +18,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="70dp"
         android:text="@string/question1" />
 
     <RadioGroup
         android:id="@+id/question1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:orientation='horizontal'>
 
         <RadioButton
@@ -121,14 +121,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="310dp"
         android:text="@string/question3" />
 
     <RadioGroup
         android:id="@+id/question3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="320dp"
         android:orientation='horizontal'>
 
         <RadioButton
@@ -172,14 +172,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="490dp"
+        android:layout_marginTop="430dp"
         android:text="@string/question4" />
 
     <RadioGroup
         android:id="@+id/question4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="440dp"
         android:orientation='horizontal'>
 
         <RadioButton

@@ -2,6 +2,7 @@ package com.mentalhealthapp.moody;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -14,9 +15,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,7 +31,7 @@ import java.util.Calendar;
  * create an instance of this fragment.
  */
 public class SurveyFragment extends Fragment {
-    final String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+    final String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 //    FirebaseDatabase database = FirebaseDatabase.getInstance();
 //    DatabaseReference ref = database.getReference();
 //    Query query = ref.child("Users").orderByChild("email").equalTo(email);
@@ -130,17 +134,15 @@ public class SurveyFragment extends Fragment {
                 int selectedId2 = question2.getCheckedRadioButtonId();
                 int selectedId3 = question3.getCheckedRadioButtonId();
                 int selectedId4 = question4.getCheckedRadioButtonId();
-                //need to check if they already submitted a survey today
-                if(false){
-                    // Now display survey has been submitted
-                    Toast.makeText(getView().getContext(), "Already submitted today, come back tomorrow", Toast.LENGTH_SHORT).show();
-                    //clear all the radio buttons
-                    question1.clearCheck();
-                    question2.clearCheck();
-                    question3.clearCheck();
-                    question4.clearCheck();
-                }
-                else if (selectedId1 == -1 || selectedId2 == -1 || selectedId3 == -1 || selectedId4 == -1) {
+
+                //need to get the date
+                SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+                Calendar c = Calendar.getInstance();
+                String date = sdf.format(c.getTime());
+
+
+                //need to check if they already submitted all questions
+                if (selectedId1 == -1 || selectedId2 == -1 || selectedId3 == -1 || selectedId4 == -1) {
                     Toast.makeText(getView().getContext(), "Please answer all questions", Toast.LENGTH_SHORT).show();
                 } else {
                     RadioButton answer1 = (RadioButton) question1.findViewById(selectedId1);
@@ -148,12 +150,15 @@ public class SurveyFragment extends Fragment {
                     RadioButton answer3 = (RadioButton) question3.findViewById(selectedId3);
                     RadioButton answer4 = (RadioButton) question4.findViewById(selectedId4);
 
-                    //need to get the date
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                    Calendar c = Calendar.getInstance();
-                    String date = sdf.format(c.getTime());
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference ref = database.getReference("Surveys/" + UID+ "/"+ date);
+
                     //now we put these in the database
-//                    ref.child(date).child("question1").setValue(answer1);
+                    ref.child("Question1").setValue(answer1.getText());
+                    ref.child("Question2").setValue(answer2.getText());
+                    ref.child("Question3").setValue(answer3.getText());
+                    ref.child("Question4").setValue(answer4.getText());
+
                     // Now display survey has been submitted
                     Toast.makeText(getView().getContext(), "Survey Submitted", Toast.LENGTH_SHORT).show();
                     //clear all the radio buttons

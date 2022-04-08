@@ -15,7 +15,7 @@
     <string name="two_hours">2 Hours</string>
     <string name="three_hours">3 Hours</string>
     <string name="four_plus_hours">4+ Hours</string>
-    <string name="self_assessment_warning">Please answer the questions below as honestly as possible.</string>
+    <string name="self_assessment_warning">Please answer the questions below as honestly as possible. You can submit multiple times a day, but only your last response for that day will be recorded.</string>
     <string name="question1">1.) How are you feeling today?</string>
     <string name="question2">2.) How well did you sleep last night?</string>
     <string name="question3">3.) How much stress are you feeling today?</string>
