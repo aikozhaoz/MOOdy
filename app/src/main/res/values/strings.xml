@@ -22,4 +22,10 @@
     <string name="question4">4.) How active are you being today?</string>
     <string name="submit">Submit</string>
     <string name="self_assessment">Self-Assessment</string>
+    <string name="happy_cow">Happy Cow</string>
+    <string name="keep_it_up">Keep it up!</string>
+    <string name="journal_this_week">Times you\'\ve filled out your journal this week:</string>
+    <string name="journal_this_month">Times you\'\ve filled out your journal this month:</string>
+    <string name="mood_this_week">Average mood this week:</string>
+    <string name="mood_this_month">Average mood this month:</string>
 </resources>
