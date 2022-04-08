@@ -24,6 +24,7 @@ public class ProfileFragment extends Fragment {
     TextView helloMessage;
     ImageView profilePic;
     Button takePicButton, updatePasswordButton, deleteAccountButton, logOutButton;
+    final String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

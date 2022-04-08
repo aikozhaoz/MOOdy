@@ -32,12 +32,6 @@ import java.util.Calendar;
  */
 public class SurveyFragment extends Fragment {
     final String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//    FirebaseDatabase database = FirebaseDatabase.getInstance();
-//    DatabaseReference ref = database.getReference();
-//    Query query = ref.child("Users").orderByChild("email").equalTo(email);
-
-    //ref.orderByChild("email").equalTo(email);
-    //ref = database.getReference("Users" + user.getFirstName() + user.getLastName());
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
