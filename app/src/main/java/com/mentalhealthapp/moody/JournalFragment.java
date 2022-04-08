@@ -33,11 +33,9 @@ public class JournalFragment extends Fragment {
     private DatabaseReference db;
     private String userID;
     View journalFragmentView;
-    Boolean journalFilled = false;
     EditText etJournalTitle, etJournalText;
     Journal journal;
-    ImageView previewImg;
-    Button uploadJournalPicture, reviewJournals, submitButton;
+    Button reviewJournals, submitButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,31 +44,12 @@ public class JournalFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_journal, container, false);
     }
 
-//    ActivityResultLauncher<Intent> launchSelectImage = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
-//        @Override
-//        public void onActivityResult(Uri result) {
-//
-//        }
-//    });
-//
-//    public void selectImage(){
-//        Intent iGallery = new Intent(Intent.ACTION_PICK);
-//        iGallery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        startActivityForResult(iGallery, GALLERY_REQ_CODE);
-//        selectImageIntent.setType("image/*");
-//        selectImageIntent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(Intent.createChooser(selectImageIntent, "Upload Image"), 200);
-//    }
-
     public void createJournal(String journalTitle, String journalText){
         journal = new Journal();
         journal.setJournalTitle(journalTitle);
         journal.setJournalText(journalText);
     }
 
-    public void writeJournalDB(){
-
-    }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         // Initialize firebase database
@@ -88,13 +67,6 @@ public class JournalFragment extends Fragment {
         reviewJournals = (Button) journalFragmentView.findViewById(R.id.review_journals);
         submitButton = (Button) journalFragmentView.findViewById(R.id.submit_journal);
 
-        // Get the preview image
-//        uploadJournalPicture.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                launchSelectImage.launch("image/*");
-//            }
-//        });
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
