@@ -53,7 +53,7 @@ public class ProfileFragment extends Fragment {
     private String userName = HomeActivity.userName;
     TextView helloMessage;
     ImageView profilePic;
-    Button takePicButton, updatePasswordButton, deleteAccountButton, logOutButton;
+    Button updatePasswordButton, deleteAccountButton, logOutButton;
     User currentUser;
 
     final private String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -127,7 +127,6 @@ public class ProfileFragment extends Fragment {
         auth = FirebaseAuth.getInstance();
         profileView = view;
         helloMessage = (TextView) profileView.findViewById(R.id.hello_message);
-        takePicButton = (Button) profileView.findViewById(R.id.take_picture_button);
         updatePasswordButton = (Button) profileView.findViewById(R.id.update_password_button);
         deleteAccountButton = (Button) profileView.findViewById(R.id.delete_account_button);
         logOutButton = (Button) profileView.findViewById(R.id.log_out_button);
@@ -153,15 +152,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-
-        takePicButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                askCameraPermissions();
-                permissionResult.launch(Manifest.permission.CAMERA);
-            }
-        });
         updatePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
