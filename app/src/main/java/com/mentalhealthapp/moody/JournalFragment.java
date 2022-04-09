@@ -126,6 +126,14 @@ public class JournalFragment extends Fragment {
                 }
             }
         } );
+
+        reviewJournals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), Journals.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void updateDatabase(Journal journal) {
