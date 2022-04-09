@@ -107,7 +107,7 @@ public class InsightsFragment extends Fragment {
         surveyDataList = new ArrayList<>();
         journalList = new ArrayList<>();
 
-        databaseReference = database.getReference("SurveysTest/"+user.getUid());
+        databaseReference = database.getReference("Surveys/"+user.getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -126,7 +126,7 @@ public class InsightsFragment extends Fragment {
             }
         });
 
-        journalReference = FirebaseDatabase.getInstance().getReference("JournalTest/" + user.getUid());
+        journalReference = FirebaseDatabase.getInstance().getReference("Journals/" + user.getUid());
         journalReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

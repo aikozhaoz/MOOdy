@@ -85,7 +85,7 @@ public class JournalFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         // Initialize firebase database
         userID = FirebaseAuth.getInstance().getUid();
-        db = FirebaseDatabase.getInstance().getReference("JournalTest/" + userID);
+        db = FirebaseDatabase.getInstance().getReference("Journals/" + userID);
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

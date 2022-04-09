@@ -94,7 +94,7 @@ public class SurveyFragment extends Fragment {
         RadioGroup question4 = getView().findViewById(R.id.question4);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        ref = database.getReference("SurveysTest/" + UID);
+        ref = database.getReference("Surveys/" + UID);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
