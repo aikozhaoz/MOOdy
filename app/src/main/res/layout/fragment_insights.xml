@@ -11,11 +11,10 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/averageMoodMonth"
             android:layout_width="108dp"
             android:layout_height="51dp"
             android:layout_marginTop="320dp"
-            android:text="Bad"
             android:textSize="38sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,11 +22,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/averageMoodWeek"
             android:layout_width="108dp"
             android:layout_height="51dp"
             android:layout_marginTop="225dp"
-            android:text="Good"
             android:textSize="38sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,11 +33,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/entriesPerMonth"
             android:layout_width="33dp"
             android:layout_height="52dp"
             android:layout_marginTop="100dp"
-            android:text="4"
+            android:text="0"
             android:textSize="50sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,11 +46,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/entriesPerWeek"
             android:layout_width="33dp"
             android:layout_height="52dp"
             android:layout_marginTop="8dp"
-            android:text="2"
+            android:text="0"
             android:textSize="50sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
