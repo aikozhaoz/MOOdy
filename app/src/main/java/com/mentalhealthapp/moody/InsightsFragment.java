@@ -245,13 +245,13 @@ public class InsightsFragment extends Fragment {
 
                 if (q3.equals("A lot")) {
                     currentMood += 1;
-                } else if (q1.equals("Some")) {
+                } else if (q3.equals("Some")) {
                     currentMood += 2;
-                } else if (q1.equals("Neutral")) {
+                } else if (q3.equals("Neutral")) {
                     currentMood += 3;
-                } else if (q1.equals("Little")) {
+                } else if (q3.equals("Little")) {
                     currentMood += 4;
-                } else if (q1.equals("None")) {
+                } else if (q3.equals("None")) {
                     currentMood += 5;
                 }
 

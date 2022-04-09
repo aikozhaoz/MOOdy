@@ -121,6 +121,9 @@ public class JournalFragment extends Fragment {
                 if (!(journalTitle.equals("") && journalText.equals(""))) {
                     Journal journal = new Journal(journalTitle,journalText);
                     updateDatabase(journal);
+                    Toast.makeText(getView().getContext(), "Journal submitted", Toast.LENGTH_SHORT).show();
+                    etJournalText.setText("");
+                    etJournalTitle.setText("");
                 } else {
                     Toast.makeText(getView().getContext(), "Please enter a title and description", Toast.LENGTH_SHORT).show();
                 }
