@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,8 +45,10 @@ public class InsightsFragment extends Fragment {
     private Button button;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
+    private DatabaseReference journalReference;
     private EditText goalText;
     private FirebaseUser user;
+    private List<Journal> journalList;
 
     private List<SurveyData> surveyDataList;
 
@@ -102,6 +105,7 @@ public class InsightsFragment extends Fragment {
         user = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
         surveyDataList = new ArrayList<>();
+        journalList = new ArrayList<>();
 
         databaseReference = database.getReference("SurveysTest/"+user.getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -112,9 +116,25 @@ public class InsightsFragment extends Fragment {
                 if (value != null){
                     List result = (List) value;
                     updateSurveyDataList(result);
-                    generateInsights();
+                    generateSurveyInsights();
                 }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        journalReference = FirebaseDatabase.getInstance().getReference("JournalTest/" + user.getUid());
+        journalReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<HashMap> value = (List) snapshot.getValue();
+                if (value != null){
+                    updateJournalList(value);
+                }
+                generateJournalInsights();
             }
 
             @Override
@@ -138,9 +158,44 @@ public class InsightsFragment extends Fragment {
 
     }
 
-    private void generateInsights() {
+    private void generateJournalInsights() {
+        int entriesPerWeek=0;
+        int entriesPerMonth=0;
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        Calendar c = Calendar.getInstance();
+        String currentDate = sdf.format(c.getTime());
+        int currentDay = Integer.parseInt(currentDate.substring(3,5));
+        int currentMonth = Integer.parseInt(currentDate.substring(0,2));
+        int currentYear = Integer.parseInt(currentDate.substring(6));
+
+        for (int i=0; i<journalList.size(); i++){
+            Journal entry = journalList.get(i);
+            String date = entry.getDate();
+            int day = Integer.parseInt(date.substring(3,5));
+            int month = Integer.parseInt(date.substring(0,2));
+            int year = Integer.parseInt(date.substring(6));
+            if (month == currentMonth){
+                entriesPerMonth++;
+            }
+            if ((currentDay-7) < day){
+                entriesPerWeek++;
+            }
+        }
+
+        TextView entriesPerWeekText = (TextView) getView().findViewById(R.id.entriesPerWeek);
+        entriesPerWeekText.setText(entriesPerWeek+"");
+
+        TextView entriesPerMonthText = (TextView) getView().findViewById(R.id.entriesPerMonth);
+        entriesPerMonthText.setText(entriesPerMonth+"");
+    }
+
+    private void generateSurveyInsights() {
         int averageMoodWeek = 0;
+        int entriesInWeek = 0;
+        int entriesInMonth = 0;
         int averageMoodMonth = 0;
+        String moodWeek = "";
+        String moodMonth = "";
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
         Calendar c = Calendar.getInstance();
         String currentDate = sdf.format(c.getTime());
@@ -155,15 +210,105 @@ public class InsightsFragment extends Fragment {
             int day = Integer.parseInt(date.substring(3,5));
             int month = Integer.parseInt(date.substring(0,2));
             int year = Integer.parseInt(date.substring(6));
-            if (currentDay > (day-7) && currentMonth == currentMonth) {
-                //calculate average mood for day and add to average for weed
+            if (currentMonth == currentMonth) {
+                int currentMood = 0;
+                entriesInWeek++;
+                entriesInMonth++;
+
+                String q1 = data.get("Question1").toString();
+                String q2 = data.get("Question2").toString();
+                String q3 = data.get("Question3").toString();
+                String q4 = data.get("Question4").toString();
+                if (q1.equals("Awful")) {
+                    currentMood += 1;
+                } else if (q1.equals("Bad")) {
+                    currentMood += 2;
+                } else if (q1.equals("Neutral")) {
+                    currentMood += 3;
+                } else if (q1.equals("Good")) {
+                    currentMood += 4;
+                } else if (q1.equals("Amazing")) {
+                    currentMood += 5;
+                }
+
+                if (q2.equals("Awful")) {
+                    currentMood += 1;
+                } else if (q2.equals("Bad")) {
+                    currentMood += 2;
+                } else if (q2.equals("Neutral")) {
+                    currentMood += 3;
+                } else if (q2.equals("Good")) {
+                    currentMood += 4;
+                } else if (q2.equals("Amazing")) {
+                    currentMood += 5;
+                }
+
+                if (q3.equals("A lot")) {
+                    currentMood += 1;
+                } else if (q3.equals("Some")) {
+                    currentMood += 2;
+                } else if (q3.equals("Neutral")) {
+                    currentMood += 3;
+                } else if (q3.equals("Little")) {
+                    currentMood += 4;
+                } else if (q3.equals("None")) {
+                    currentMood += 5;
+                }
+
+                if (q4.equals("None")) {
+                    currentMood += 1;
+                } else if (q4.equals("1 Hour")) {
+                    currentMood += 2;
+                } else if (q4.equals("2 Hours")) {
+                    currentMood += 3;
+                } else if (q4.equals("3 Hours")) {
+                    currentMood += 4;
+                } else if (q4.equals("4+ Hours")) {
+                    currentMood += 5;
+                }
+
+                currentMood = currentMood / 4;
+                if ((currentDay - 7) < day && currentMonth == currentMonth) {
+                    averageMoodWeek += currentMood;
+                }
+                averageMoodMonth += currentMood;
+            }
+
+            averageMoodMonth /= entriesInMonth;
+            averageMoodWeek /= entriesInWeek;
+            if (averageMoodWeek == 1){
+                moodWeek = "Awful";
+            } else if (averageMoodWeek == 2){
+                moodWeek = "Bad";
+            } else if (averageMoodWeek == 3){
+                moodWeek = "Neutral";
+            } else if (averageMoodWeek == 4){
+                moodWeek = "Good";
+            } else if (averageMoodWeek == 5){
+                moodWeek = "Amazing";
+            }
+
+            if (averageMoodMonth == 1){
+                moodMonth = "Awful";
+            } else if (averageMoodMonth == 2){
+                moodMonth = "Bad";
+            } else if (averageMoodMonth == 3){
+                moodMonth = "Neutral";
+            } else if (averageMoodMonth == 4){
+                moodMonth = "Good";
+            } else if (averageMoodMonth == 5) {
+                moodMonth = "Amazing";
+            }
+            TextView averageMoodWeekText = (TextView) getView().findViewById(R.id.averageMoodWeek);
+            averageMoodWeekText.setText(moodWeek);
+
+            TextView averageMoodMonthText = (TextView) getView().findViewById(R.id.averageMoodMonth);
+            averageMoodMonthText.setText(moodMonth);
+
+
+                //calculate average mood for day and add to average for week
 
             }
-        }
-
-
-
-
     }
 
     private void updateSurveyDataList(List<HashMap> valueList) {
@@ -172,6 +317,21 @@ public class InsightsFragment extends Fragment {
             HashMap survey = valueList.get(i);
             SurveyData surveyData = new SurveyData((HashMap) survey.get("surveyData"));
             surveyDataList.add(surveyData);
+        }
+
+    }
+
+    private void updateJournalList(List<HashMap> journalList) {
+        this.journalList.clear();
+        for (int i=0;i< journalList.size();i++){
+            HashMap journal = journalList.get(i);
+            Journal newJournal = new Journal();
+
+            newJournal.setJournalTitle(journal.get("journalTitle").toString());
+            newJournal.setJournalText(journal.get("journalText").toString());
+            newJournal.setDate(journal.get("date").toString());
+
+            this.journalList.add(newJournal);
         }
     }
 }
