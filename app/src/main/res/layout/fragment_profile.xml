@@ -44,6 +44,21 @@
             app:srcCompat="@drawable/cow_profile"></ImageView>
 
         <Button
+            android:id="@+id/take_picture_button"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/button_background"
+            android:elevation="2dp"
+            android:text="Take Profile Picture"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_img_holder"
+            app:layout_constraintWidth_percent="0.5" />
+        <Button
             android:id="@+id/update_password_button"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -56,7 +71,7 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_img_holder"
+            app:layout_constraintTop_toBottomOf="@+id/take_picture_button"
             app:layout_constraintWidth_percent="0.5" />
 
         <Button
