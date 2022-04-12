@@ -9,6 +9,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -84,8 +85,10 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void enableCamera() {
-        Intent intent = new Intent(this, CameraActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, CameraActivity.class);
+//        startActivity(intent);
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, CAMERA_REQUEST_CODE);
     }
 
     public void validateUserCredentials() {
