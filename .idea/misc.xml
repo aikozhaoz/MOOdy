@@ -31,6 +31,7 @@
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.14703318277994792" />
         <entry key="app/src/main/res/layout-land/activity_sign_up.xml" value="0.18593676152799288" />
         <entry key="app/src/main/res/layout-land/fragment_goals.xml" value="0.21682128906250003" />
+        <entry key="app/src/main/res/layout-land/fragment_insights.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/layout-land/fragment_journal.xml" value="0.1468016232552772" />
         <entry key="app/src/main/res/layout-land/fragment_profile.xml" value="0.16687571207682295" />
         <entry key="app/src/main/res/layout-land/fragment_survey.xml" value="0.1" />
@@ -45,6 +46,7 @@
         <entry key="app/src/main/res/layout/activity_start.xml" value="0.25171661376953125" />
         <entry key="app/src/main/res/layout/activity_update_password.xml" value="0.26197916666666665" />
         <entry key="app/src/main/res/layout/fragment_goals.xml" value="0.13360507246376813" />
+        <entry key="app/src/main/res/layout/fragment_insights.xml" value="0.16621376811594202" />
         <entry key="app/src/main/res/layout/fragment_journal.xml" value="0.1286231884057971" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_survey.xml" value="0.1" />
