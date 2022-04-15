@@ -26,6 +26,8 @@
         <entry key="app/src/main/res/drawable/ic_baseline_setting_24.xml" value="0.2355" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2355" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.252" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.14703318277994792" />
+        <entry key="app/src/main/res/layout-land/activity_sign_up.xml" value="0.18593676152799288" />
         <entry key="app/src/main/res/layout/activity_camera.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/activity_delete.xml" value="0.26197916666666665" />
         <entry key="app/src/main/res/layout/activity_delete_account.xml" value="0.24791666666666667" />
