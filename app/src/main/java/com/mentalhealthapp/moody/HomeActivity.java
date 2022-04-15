@@ -26,13 +26,10 @@ public class HomeActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance();
-        //Get user info
-        currentUser = auth.getCurrentUser();
-        userName = currentUser.getDisplayName().toString();
-
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_home);
         //Initialize Bottom Navigation View.
         BottomNavigationView navView = findViewById(R.id.bottomNavigationView);
@@ -46,5 +43,6 @@ public class HomeActivity extends AppCompatActivity{
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
     }
 }

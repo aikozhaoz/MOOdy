@@ -30,6 +30,14 @@ android {
 
 dependencies {
 
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test:rules:1.4.0'
+    // Optional -- UI testing with Espresso
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
+    // Optional -- UI testing with UI Automator
+    //androidTestImplementation "androidx.test.uiautomator:uiautomator:"
+    // Optional -- UI testing with Compose
+    //androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'

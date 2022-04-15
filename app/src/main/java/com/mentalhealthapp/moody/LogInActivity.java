@@ -32,7 +32,21 @@ public class LogInActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
         validateUserCredentials();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        int i=2;
+        finish();
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
     }
 
     public void validateUserCredentials() {
@@ -53,8 +67,9 @@ public class LogInActivity extends AppCompatActivity {
                 }
                 else{
                     signIn(email, password);
-                    Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
-                    startActivity(intent);
+
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 }
             }
         });
@@ -66,9 +81,9 @@ public class LogInActivity extends AppCompatActivity {
 
     // Sign user in with validated credentials
     private void signIn(String email, String password){
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+            public void onComplete(@NonNull Task task) {
                 if(task.isSuccessful()){
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(LogInActivity.this, "Log In Success", Toast.LENGTH_SHORT).show();
