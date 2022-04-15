@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.252" />
         <entry key="app/src/main/res/layout-land/activity_delete_account.xml" value="0.14604034423828127" />
         <entry key="app/src/main/res/layout-land/activity_home.xml" value="0.15104166666666666" />
+        <entry key="app/src/main/res/layout-land/activity_journals.xml" value="0.109375" />
         <entry key="app/src/main/res/layout-land/activity_log_in.xml" value="0.3032345013477089" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.14703318277994792" />
         <entry key="app/src/main/res/layout-land/activity_sign_up.xml" value="0.18593676152799288" />
