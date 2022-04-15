@@ -55,6 +55,7 @@ public class LogInActivity extends AppCompatActivity {
                     signIn(email, password);
                     Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

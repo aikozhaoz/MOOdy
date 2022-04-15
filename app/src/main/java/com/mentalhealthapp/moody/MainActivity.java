@@ -50,6 +50,12 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        int i = 2;
+    }
+
 //    @Override
 //    public void onBackPressed(){
 //        super.onBackPressed();
