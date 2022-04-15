@@ -46,7 +46,7 @@
         <Button
             android:id="@+id/update_password_button"
             android:layout_width="467dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:backgroundTint="@color/button_background"
             android:elevation="2dp"
             android:text="Update Password"
@@ -62,7 +62,7 @@
         <Button
             android:id="@+id/delete_account_button"
             android:layout_width="467dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginTop="7dp"
             android:backgroundTint="@color/button_background"
             android:elevation="2dp"
@@ -79,7 +79,7 @@
         <Button
             android:id="@+id/log_out_button"
             android:layout_width="467dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginTop="7dp"
             android:backgroundTint="@color/button_background"
             android:elevation="2dp"
