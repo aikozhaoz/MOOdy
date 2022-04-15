@@ -172,8 +172,9 @@ public class ProfileFragment extends Fragment {
                 Intent i = new Intent(getActivity().getApplicationContext(), MainActivity.class);
                 i.putExtra("Log Out", true);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                getActivity().startActivity(i);
                 auth.signOut();
+
+                getActivity().startActivity(i);
                 getActivity().finish();
             }
         });

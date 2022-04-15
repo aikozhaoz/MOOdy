@@ -143,8 +143,9 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     // Create an account for the user using firebase
                     createAccount(firstName, lastName, email, password);
-                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
-                    startActivity(intent);
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+
                 }
             }
         });
@@ -163,15 +164,9 @@ public class SignUpActivity extends AppCompatActivity {
                 // Note to team:
                 // A toast provides simple feedback about an operation in a small popup.
                 if (task.isSuccessful()) {
-                    // Send user verification email
-                    currentUser.sendEmailVerification();
                     Toast.makeText(SignUpActivity.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
                     // To do: Redirect to user's home page
                     // finish();
-                    // Check if user is verified.
-                    if (currentUser.isEmailVerified()) {
-                        Toast.makeText(SignUpActivity.this, "You are verified!", Toast.LENGTH_SHORT).show();
-                    }
                     //create user here
                     final String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     user = new User();
@@ -185,6 +180,12 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
     }
 
 }
