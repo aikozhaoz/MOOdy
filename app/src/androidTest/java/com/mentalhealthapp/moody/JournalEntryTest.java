@@ -36,7 +36,7 @@ public class JournalEntryTest
     }
 
     @Test
-    public void testUserInputScenario(){
+    public void testJournalSubmission(){
 
         String title = "Test Entry Title";
         String description = "Test Entry Description";
@@ -55,18 +55,6 @@ public class JournalEntryTest
 
         Espresso.onView(withId(R.id.review_journals)).perform(click());
 
-       // Espresso.onView(withId(R.id.journalsView)).check(matches(withText(title)));
-
-        onData(anything()).inAdapterView(withId(R.id.journalsView)).atPosition(0).toString().contains(title);
-        onData(anything()).inAdapterView(withId(R.id.journalsView)).atPosition(0).toString().contains(description);
-
-
-//                onData(anything()).inAdapterView(withId(R.id.to_do_list_view)).atPosition(0).
-//                onChildView(withId(R.id.item_title)).
-//                check(matches(withText("TODO Title Sample")));
-
-        //close soft keyboard
-        //checking text in textview
     }
 
 
