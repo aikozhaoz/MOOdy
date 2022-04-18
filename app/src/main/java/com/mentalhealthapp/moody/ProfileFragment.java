@@ -130,7 +130,7 @@ public class ProfileFragment extends Fragment {
         updatePasswordButton = (Button) profileView.findViewById(R.id.update_password_button);
         deleteAccountButton = (Button) profileView.findViewById(R.id.delete_account_button);
         logOutButton = (Button) profileView.findViewById(R.id.log_out_button);
-        String welcomeMessage = "Hello " + userName + " !";
+        String welcomeMessage = "Hello " + userName + "!";
         helloMessage.setText(welcomeMessage);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

@@ -3,24 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="640dp"
+    android:layout_height="match_parent"
     tools:context=".GoalsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Space
+            android:id="@+id/space5"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
         <EditText
             android:id="@+id/editGoalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Enter a goal for today!"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:hint="Enter a goal for today!"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:imeOptions="actionDone"
+            app:layout_constraintBottom_toTopOf="@+id/space5"
             app:layout_constraintEnd_toStartOf="@+id/addGoalButton"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -29,9 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
             android:text="Add Goal"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/space5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/divider" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <View
             android:id="@+id/divider"
@@ -46,11 +53,11 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="389dp"
-            android:layout_height="538dp"
+            android:layout_width="718dp"
+            android:layout_height="142dp"
             android:layout_marginEnd="1dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/addGoalButton"
+            app:layout_constraintBottom_toTopOf="@+id/editGoalText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -59,6 +66,7 @@
                 android:id="@+id/goalsView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    tools:context=".ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_heading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:id="@+id/hello_message"
+            android:layout_width="506dp"
+            android:layout_height="53dp"
+            android:gravity="center"
+            android:text="Hello!"
+            android:textColor="@color/brown"
+            android:textSize="40dp"
+            app:layout_constraintEnd_toEndOf="@+id/update_password_button"
+            app:layout_constraintStart_toStartOf="@+id/update_password_button"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/profile_img_holder"
+            android:layout_width="162dp"
+            android:layout_height="161dp"
+            android:adjustViewBounds="true"
+            android:background="@color/french_beige"
+            android:gravity="center"
+            android:maxWidth="150dp"
+            android:maxHeight="150dp"
+            app:layout_constraintBottom_toTopOf="@+id/space4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hello_message"
+            app:srcCompat="@drawable/cow_profile"></ImageView>
+
+        <Button
+            android:id="@+id/update_password_button"
+            android:layout_width="467dp"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/button_background"
+            android:elevation="2dp"
+            android:text="Update Password"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profile_img_holder"
+            app:layout_constraintTop_toBottomOf="@+id/hello_message"
+            app:layout_constraintBottom_toTopOf="@+id/delete_account_button"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <Button
+            android:id="@+id/delete_account_button"
+            android:layout_width="467dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:backgroundTint="@color/button_background"
+            android:elevation="2dp"
+            android:text="Delete Account"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profile_img_holder"
+            app:layout_constraintTop_toBottomOf="@+id/update_password_button"
+            app:layout_constraintBottom_toTopOf="@+id/log_out_button"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <Button
+            android:id="@+id/log_out_button"
+            android:layout_width="467dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:backgroundTint="@color/button_background"
+            android:elevation="2dp"
+            android:text="Log Out"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/space4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profile_img_holder"
+            app:layout_constraintTop_toBottomOf="@+id/delete_account_button"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <Space
+            android:id="@+id/space4"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</FrameLayout>
