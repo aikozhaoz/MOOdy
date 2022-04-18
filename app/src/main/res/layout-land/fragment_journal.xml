@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JournalFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_journal_title"
+            android:layout_width="348dp"
+            android:layout_height="73dp"
+            android:layout_marginStart="20dp"
+            android:hint="Enter your journal title here: "
+            android:textColorHint="@color/brown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etjournal_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/beige"
+                android:gravity="left"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/brown"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_journal_text"
+            android:layout_width="517dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="20dp"
+            android:hint="Enter your journal content here: "
+            android:textColorHint="@color/brown"
+            app:layout_constraintBottom_toTopOf="@+id/space2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_journal_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etjournal_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/beige"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/brown"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/review_journals"
+            android:layout_width="199dp"
+            android:layout_height="73dp"
+            android:backgroundTint="@color/button_background"
+            android:elevation="2dp"
+            android:text="Review Previous Journals"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/layout_journal_text"
+            app:layout_constraintTop_toTopOf="@+id/layout_journal_text" />
+
+        <Button
+            android:id="@+id/submit_journal"
+            android:layout_width="199dp"
+            android:layout_height="73dp"
+            android:backgroundTint="@color/button_background"
+            android:elevation="2dp"
+            android:text="Submit Journal"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/space2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/layout_journal_text"
+            app:layout_constraintTop_toBottomOf="@+id/review_journals" />
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/review_journals"-->
+        <!--                app:layout_constraintWidth_percent="0.5" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
