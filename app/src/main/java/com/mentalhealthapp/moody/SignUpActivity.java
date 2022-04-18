@@ -143,8 +143,7 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     // Create an account for the user using firebase
                     createAccount(firstName, lastName, email, password);
-                    finish();
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+
 
                 }
             }
@@ -174,6 +173,8 @@ public class SignUpActivity extends AppCompatActivity {
                     user.setFirstName(firstName);
                     user.setLastName(lastName);
                     ref.child(UID).setValue(user);
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 } else {
                     Log.d(TAG, "Sign up: failure", task.getException());
                     Toast.makeText(SignUpActivity.this, "Failed to send verification email. User already existed.", Toast.LENGTH_SHORT).show();
