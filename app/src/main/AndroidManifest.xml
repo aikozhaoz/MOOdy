@@ -37,7 +37,6 @@
             android:name=".HomeActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan"
-            android:configChanges="orientation|screenSize|keyboardHidden"
             />
         <activity
             android:name=".SignUpActivity"
