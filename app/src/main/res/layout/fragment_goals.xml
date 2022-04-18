@@ -19,6 +19,7 @@
             android:minHeight="48dp"
             android:hint="Enter a goal for today!"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:imeOptions="actionDone"
             app:layout_constraintEnd_toStartOf="@+id/addGoalButton"
             app:layout_constraintStart_toStartOf="parent" />
 

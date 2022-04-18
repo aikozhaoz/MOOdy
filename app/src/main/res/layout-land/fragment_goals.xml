@@ -24,6 +24,7 @@
             android:hint="Enter a goal for today!"
             android:inputType="textPersonName"
             android:minHeight="48dp"
+            android:imeOptions="actionDone"
             app:layout_constraintBottom_toTopOf="@+id/space5"
             app:layout_constraintEnd_toStartOf="@+id/addGoalButton"
             app:layout_constraintHorizontal_bias="1.0"
