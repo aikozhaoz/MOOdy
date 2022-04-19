@@ -1,7 +1,6 @@
 package com.mentalhealthapp.moody;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class Journal {
