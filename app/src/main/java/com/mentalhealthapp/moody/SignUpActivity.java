@@ -150,7 +150,6 @@ public class SignUpActivity extends AppCompatActivity {
                 user = new User();
                 user.setEmail(email);
                 user.setFirstName(firstName);
-                user.setLastName(lastName);
                 ref.child(UID).setValue(user);
                 finish();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
