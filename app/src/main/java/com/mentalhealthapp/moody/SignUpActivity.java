@@ -1,31 +1,22 @@
 package com.mentalhealthapp.moody;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
-import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.Button;
-import android.util.Log;
-import android.os.Bundle;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,7 +25,6 @@ public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = SignUpActivity.class.getSimpleName();
     private final int MIN_PASSWORD_LENGTH = 8;
     private FirebaseAuth auth;
-    private FirebaseUser currentUser;
     EditText etFirstName, etLastName, etEmail, etPassword, etConfirmPassword;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference("Users");
@@ -52,18 +42,14 @@ public class SignUpActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();
         // Initialize Firebase current user
-        currentUser = auth.getCurrentUser();
         // Get user's info and check if they meet our criteria.
         validateUserCredentials();
         Button enableCamera = findViewById(R.id.take_profile_pic);
-        enableCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (hasCameraPermission()) {
-                    enableCamera();
-                } else {
-                    requestPermission();
-                }
+        enableCamera.setOnClickListener(v -> {
+            if (hasCameraPermission()) {
+                enableCamera();
+            } else {
+                requestPermission();
             }
         });
 
@@ -85,8 +71,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void enableCamera() {
-//        Intent intent = new Intent(this, CameraActivity.class);
-//        startActivity(intent);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA_REQUEST_CODE);
     }
@@ -100,52 +84,49 @@ public class SignUpActivity extends AppCompatActivity {
 
         // Fire sign up button
         Button signupButton = findViewById(R.id.signup_button_signup);
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // If Input is valid, send data to our server
-                String firstName = etFirstName.getText().toString();
-                String lastName = etLastName.getText().toString();
-                String email = etEmail.getText().toString();
-                String password = etPassword.getText().toString();
-                String confirmPassword = etConfirmPassword.getText().toString();
+        signupButton.setOnClickListener(view -> {
+            // If Input is valid, send data to our server
+            String firstName = etFirstName.getText().toString();
+            String lastName = etLastName.getText().toString();
+            String email = etEmail.getText().toString();
+            String password = etPassword.getText().toString();
+            String confirmPassword = etConfirmPassword.getText().toString();
 
-                if (TextUtils.isEmpty(firstName)) {
-                    etFirstName.setError("Empty Input! Please enter your first name.");
-                    etFirstName.requestFocus();
-                } else if (TextUtils.isEmpty(lastName)) {
-                    etLastName.setError("Empty Input! Please enter your last name.");
-                    etLastName.requestFocus();
-                } else if (TextUtils.isEmpty(email)) {
-                    etEmail.setError("Empty Input! Please enter your email.");
-                    etEmail.requestFocus();
-                } else if (TextUtils.isEmpty(password)) {
-                    etPassword.setError("Empty Input! Please enter your password.");
-                    etPassword.requestFocus();
-                } else if (TextUtils.isEmpty(confirmPassword)) {
-                    etConfirmPassword.setError("Empty Input! Please confirm your password.");
-                    etConfirmPassword.requestFocus();
-                }
-                // Check email format
-                else if (!isEmailValid(email)) {
-                    etEmail.setError("Please enter a valid Email address.");
-                    etEmail.requestFocus();
-                }
-                // Check minimum password Length
-                else if (password.length() < MIN_PASSWORD_LENGTH) {
-                    etPassword.setError("Password invalid! Password length must be more than " + MIN_PASSWORD_LENGTH + "characters");
-                    etPassword.requestFocus();
-                }
-                // Check if password matches confirm password
-                else if (!password.equals(confirmPassword)) {
-                    etConfirmPassword.setError("Password does not match.");
-                    etPassword.requestFocus();
-                } else {
-                    // Create an account for the user using firebase
-                    createAccount(firstName, lastName, email, password);
+            if (TextUtils.isEmpty(firstName)) {
+                etFirstName.setError("Empty Input! Please enter your first name.");
+                etFirstName.requestFocus();
+            } else if (TextUtils.isEmpty(lastName)) {
+                etLastName.setError("Empty Input! Please enter your last name.");
+                etLastName.requestFocus();
+            } else if (TextUtils.isEmpty(email)) {
+                etEmail.setError("Empty Input! Please enter your email.");
+                etEmail.requestFocus();
+            } else if (TextUtils.isEmpty(password)) {
+                etPassword.setError("Empty Input! Please enter your password.");
+                etPassword.requestFocus();
+            } else if (TextUtils.isEmpty(confirmPassword)) {
+                etConfirmPassword.setError("Empty Input! Please confirm your password.");
+                etConfirmPassword.requestFocus();
+            }
+            // Check email format
+            else if (!isEmailValid(email)) {
+                etEmail.setError("Please enter a valid Email address.");
+                etEmail.requestFocus();
+            }
+            // Check minimum password Length
+            else if (password.length() < MIN_PASSWORD_LENGTH) {
+                etPassword.setError("Password invalid! Password length must be more than " + MIN_PASSWORD_LENGTH + "characters");
+                etPassword.requestFocus();
+            }
+            // Check if password matches confirm password
+            else if (!password.equals(confirmPassword)) {
+                etConfirmPassword.setError("Password does not match.");
+                etPassword.requestFocus();
+            } else {
+                // Create an account for the user using firebase
+                createAccount(firstName, lastName, email, password);
 
 
-                }
             }
         });
     }
@@ -157,27 +138,24 @@ public class SignUpActivity extends AppCompatActivity {
 
     //    Create an account for the user with given credentials
     private void createAccount(String firstName, String lastName, String email, String password) {
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                // Note to team:
-                // A toast provides simple feedback about an operation in a small popup.
-                if (task.isSuccessful()) {
-                    Toast.makeText(SignUpActivity.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
-                    // To do: Redirect to user's home page
-                    // finish();
-                    //create user here
-                    final String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    user = new User();
-                    user.setEmail(email);
-                    user.setFirstName(firstName);
-                    ref.child(UID).setValue(user);
-                    finish();
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                } else {
-                    Log.d(TAG, "Sign up: failure", task.getException());
-                    Toast.makeText(SignUpActivity.this, "Failed to send verification email. User already existed.", Toast.LENGTH_SHORT).show();
-                }
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUpActivity.this, task -> {
+            // Note to team:
+            // A toast provides simple feedback about an operation in a small popup.
+            if (task.isSuccessful()) {
+                Toast.makeText(SignUpActivity.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
+                // To do: Redirect to user's home page
+                // finish();
+                //create user here
+                final String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                user = new User();
+                user.setEmail(email);
+                user.setFirstName(firstName);
+                ref.child(UID).setValue(user);
+                finish();
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            } else {
+                Log.d(TAG, "Sign up: failure", task.getException());
+                Toast.makeText(SignUpActivity.this, "Failed to send verification email. User already existed.", Toast.LENGTH_SHORT).show();
             }
         });
     }
