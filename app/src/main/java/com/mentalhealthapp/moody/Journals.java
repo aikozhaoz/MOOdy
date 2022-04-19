@@ -1,15 +1,11 @@
 package com.mentalhealthapp.moody;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -24,19 +20,16 @@ import java.util.List;
 
 public class Journals extends AppCompatActivity {
 
-    private DatabaseReference db;
-    private String userID;
     List<Journal> journalList;
     private ArrayList<String> items;
     private ArrayAdapter<String> itemsAdapter;
-    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journals);
-        userID = FirebaseAuth.getInstance().getUid();
-        db = FirebaseDatabase.getInstance().getReference("Journals/" + userID);
+        String userID = FirebaseAuth.getInstance().getUid();
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Journals/" + userID);
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -53,7 +46,7 @@ public class Journals extends AppCompatActivity {
         });
 
         journalList = new ArrayList<>();
-        listView = findViewById(R.id.journalsView);
+        ListView listView = findViewById(R.id.journalsView);
         items = new ArrayList<>();
         itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         listView.setAdapter(itemsAdapter);

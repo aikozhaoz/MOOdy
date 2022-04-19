@@ -2,17 +2,16 @@ package com.mentalhealthapp.moody;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,11 +31,9 @@ import java.util.List;
  */
 public class JournalFragment extends Fragment {
     private DatabaseReference db;
-    private String userID;
     List<Journal> journalList;
     View journalFragmentView;
     EditText etJournalTitle, etJournalText;
-    Journal journal;
     Button reviewJournals, submitButton;
 
     @Override
@@ -47,9 +44,9 @@ public class JournalFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         // Initialize firebase database
-        userID = FirebaseAuth.getInstance().getUid();
+        String userID = FirebaseAuth.getInstance().getUid();
         db = FirebaseDatabase.getInstance().getReference("Journals/" + userID);
         db.addValueEventListener(new ValueEventListener() {
             @Override
@@ -74,41 +71,32 @@ public class JournalFragment extends Fragment {
         etJournalText = journalFragmentView.findViewById(R.id.etjournal_text);
 
         // Initialize all the buttons
-        reviewJournals = (Button) journalFragmentView.findViewById(R.id.review_journals);
-        submitButton = (Button) journalFragmentView.findViewById(R.id.submit_journal);
+        reviewJournals = journalFragmentView.findViewById(R.id.review_journals);
+        submitButton = journalFragmentView.findViewById(R.id.submit_journal);
         journalList = new ArrayList<>();
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String journalTitle = etJournalTitle.getText().toString();
-                String journalText = etJournalText.getText().toString();
-                if (!(journalTitle.equals("") && journalText.equals(""))) {
-                    Journal journal = new Journal(journalTitle,journalText);
-                    updateDatabase(journal);
-                    Toast.makeText(getView().getContext(), "Journal submitted", Toast.LENGTH_SHORT).show();
-                    etJournalText.setText("");
-                    etJournalTitle.setText("");
-                } else {
-                    Toast.makeText(getView().getContext(), "Please enter a title and description", Toast.LENGTH_SHORT).show();
-                }
+        submitButton.setOnClickListener(view1 -> {
+            String journalTitle = etJournalTitle.getText().toString();
+            String journalText = etJournalText.getText().toString();
+            if (!(journalTitle.equals("") && journalText.equals(""))) {
+                Journal journal = new Journal(journalTitle,journalText);
+                updateDatabase(journal);
+                Toast.makeText(getView().getContext(), "Journal submitted", Toast.LENGTH_SHORT).show();
+                etJournalText.setText("");
+                etJournalTitle.setText("");
+            } else {
+                Toast.makeText(getView().getContext(), "Please enter a title and description", Toast.LENGTH_SHORT).show();
             }
-        } );
+        });
 
-        reviewJournals.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Journals.class);
-                startActivity(intent);
-            }
+        reviewJournals.setOnClickListener(view12 -> {
+            Intent intent = new Intent(getActivity(), Journals.class);
+            startActivity(intent);
         });
     }
 
     private void updateDatabase(Journal journal) {
-        List<Journal> updateJournal = new ArrayList<>();
-        for (int i=0; i<journalList.size(); i++){
-            updateJournal.add(journalList.get(i));
-        }
+        List<Journal> updateJournal = new ArrayList<>(journalList);
         updateJournal.add(journal);
 
         db.setValue(updateJournal);
